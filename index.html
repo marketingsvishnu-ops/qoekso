@@ -1,1974 +1,464 @@
-```html
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>PULSEX — Future Fitness</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<title>Demo</title>
 
 <style>
-
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    scroll-behavior:smooth;
-}
-
-:root{
-    --lime:#b8ff00;
-    --green:#4cff6b;
-    --dark:#060b09;
-    --dark2:#0c1410;
-    --card:#101a15;
-    --text:#f2f7f3;
-    --muted:#84958a;
-    --line:#1e2b23;
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial,sans-serif;
 }
 
 body{
-    font-family:"Manrope",sans-serif;
-    background:var(--dark);
-    color:var(--text);
-    overflow-x:hidden;
-}
-
-a{
-    color:inherit;
-    text-decoration:none;
+  background:#0f1020;
+  color:white;
 }
 
 .container{
-    width:min(1180px,92%);
-    margin:auto;
-}
-
-/* ================= NAV ================= */
-
-nav{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    z-index:1000;
-    padding:20px 0;
-    background:linear-gradient(
-        to bottom,
-        rgba(6,11,9,.96),
-        rgba(6,11,9,.65),
-        transparent
-    );
-}
-
-.nav-inner{
-    width:min(1180px,92%);
-    margin:auto;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-}
-
-.logo{
-    font-family:"Barlow Condensed";
-    font-size:34px;
-    font-weight:800;
-    letter-spacing:1px;
-}
-
-.logo span{
-    color:var(--lime);
-}
-
-.nav-links{
-    display:flex;
-    gap:30px;
-    font-size:13px;
-    font-weight:700;
-    color:#a7b3aa;
-}
-
-.nav-links a{
-    transition:.3s;
-}
-
-.nav-links a:hover{
-    color:var(--lime);
-}
-
-.nav-join{
-    padding:11px 19px;
-    border:1px solid var(--lime);
-    color:var(--lime);
-    font-size:13px;
-    font-weight:800;
-    transition:.3s;
-}
-
-.nav-join:hover{
-    background:var(--lime);
-    color:#071007;
-}
-
-/* ================= HERO ================= */
-
-.hero{
-    min-height:900px;
-    position:relative;
-    overflow:hidden;
-    display:flex;
-    align-items:center;
-    background:
-        radial-gradient(
-            circle at 75% 50%,
-            rgba(184,255,0,.12),
-            transparent 28%
-        ),
-        #060b09;
-}
-
-.hero-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:60px;
-    align-items:center;
-}
-
-.hero-content{
-    position:relative;
-    z-index:5;
-}
-
-.hero-label{
-    display:inline-flex;
-    align-items:center;
-    gap:9px;
-    color:var(--lime);
-    font-size:12px;
-    font-weight:800;
-    letter-spacing:2px;
-    text-transform:uppercase;
-}
-
-.live-dot{
-    width:8px;
-    height:8px;
-    border-radius:50%;
-    background:var(--lime);
-    box-shadow:0 0 15px var(--lime);
-    animation:pulse 1.4s infinite;
-}
-
-@keyframes pulse{
-    50%{
-        transform:scale(1.5);
-        opacity:.5;
-    }
-}
-
-.hero h1{
-    margin-top:20px;
-    font-family:"Barlow Condensed";
-    font-size:clamp(70px,10vw,145px);
-    line-height:.78;
-    letter-spacing:-3px;
-    text-transform:uppercase;
-}
-
-.hero h1 span{
-    color:transparent;
-    -webkit-text-stroke:1px #b8ff00;
-}
-
-.hero-description{
-    max-width:530px;
-    margin-top:32px;
-    color:var(--muted);
-    line-height:1.8;
-    font-size:15px;
-}
-
-.hero-buttons{
-    display:flex;
-    gap:13px;
-    margin-top:35px;
-}
-
-.btn-primary{
-    background:var(--lime);
-    color:#071007;
-    padding:15px 25px;
-    font-size:13px;
-    font-weight:900;
-    text-transform:uppercase;
-    transition:.3s;
-}
-
-.btn-primary:hover{
-    box-shadow:0 0 35px rgba(184,255,0,.35);
-    transform:translateY(-4px);
-}
-
-.btn-outline{
-    border:1px solid var(--line);
-    padding:15px 25px;
-    font-size:13px;
-    font-weight:800;
-    transition:.3s;
-}
-
-.btn-outline:hover{
-    border-color:var(--lime);
-    color:var(--lime);
-}
-
-/* HERO VISUAL */
-
-.hero-art{
-    height:620px;
-    position:relative;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-}
-
-.energy-ring{
-    width:480px;
-    height:480px;
-    border:1px solid rgba(184,255,0,.25);
-    border-radius:50%;
-    position:absolute;
-    animation:spin 15s linear infinite;
-}
-
-.energy-ring::before,
-.energy-ring::after{
-    content:"";
-    position:absolute;
-    inset:35px;
-    border:1px dashed rgba(76,255,107,.2);
-    border-radius:50%;
-}
-
-.energy-ring::after{
-    inset:85px;
-    border-color:rgba(184,255,0,.2);
-}
-
-@keyframes spin{
-    to{
-        transform:rotate(360deg);
-    }
-}
-
-.energy-core{
-    width:260px;
-    height:260px;
-    border-radius:50%;
-    position:relative;
-    background:
-        radial-gradient(
-            circle at 35% 30%,
-            #dcff70,
-            #8dcc00 25%,
-            #1c3a0e 55%,
-            #071007 75%
-        );
-    box-shadow:
-        0 0 60px rgba(184,255,0,.25),
-        0 0 130px rgba(76,255,107,.1);
-    animation:coreFloat 4s ease-in-out infinite;
-}
-
-@keyframes coreFloat{
-    50%{
-        transform:translateY(-15px) scale(1.04);
-    }
-}
-
-.energy-core::before{
-    content:"PULSE";
-    position:absolute;
-    inset:0;
-    display:grid;
-    place-items:center;
-    font-family:"Barlow Condensed";
-    font-size:45px;
-    font-weight:800;
-    letter-spacing:4px;
-    color:#071007;
-}
-
-.orbit{
-    width:600px;
-    height:190px;
-    position:absolute;
-    border:1px solid rgba(184,255,0,.2);
-    border-radius:50%;
-    transform:rotate(-25deg);
-    animation:orbit 8s linear infinite;
-}
-
-@keyframes orbit{
-    to{
-        transform:rotate(335deg);
-    }
-}
-
-.hero-mini{
-    position:absolute;
-    padding:14px 17px;
-    background:rgba(12,20,16,.88);
-    border:1px solid var(--line);
-    backdrop-filter:blur(15px);
-}
-
-.hero-mini strong{
-    display:block;
-    color:var(--lime);
-    font-family:"Barlow Condensed";
-    font-size:28px;
-}
-
-.hero-mini small{
-    color:var(--muted);
-    font-size:10px;
-}
-
-.mini-one{
-    top:90px;
-    right:10px;
-}
-
-.mini-two{
-    bottom:90px;
-    left:0;
-}
-
-/* GRID BACKGROUND */
-
-.hero-grid-bg{
-    position:absolute;
-    inset:auto 0 0;
-    height:250px;
-    opacity:.18;
-    background-image:
-        linear-gradient(var(--green) 1px,transparent 1px),
-        linear-gradient(90deg,var(--green) 1px,transparent 1px);
-    background-size:45px 45px;
-    transform:perspective(350px) rotateX(55deg) scale(1.5);
-    transform-origin:bottom;
-}
-
-/* ================= MARQUEE ================= */
-
-.marquee{
-    border-top:1px solid var(--line);
-    border-bottom:1px solid var(--line);
-    overflow:hidden;
-    padding:17px 0;
-    background:#09100c;
-}
-
-.marquee-track{
-    display:flex;
-    width:max-content;
-    animation:marquee 22s linear infinite;
-}
-
-.marquee span{
-    font-family:"Barlow Condensed";
-    font-size:20px;
-    letter-spacing:2px;
-    margin-right:50px;
-    color:#84958a;
-}
-
-.marquee b{
-    color:var(--lime);
-}
-
-@keyframes marquee{
-    to{
-        transform:translateX(-50%);
-    }
-}
-
-/* ================= SECTIONS ================= */
-
-section{
-    padding:120px 0;
-}
-
-.section-header{
-    display:flex;
-    justify-content:space-between;
-    align-items:end;
-    margin-bottom:55px;
-}
-
-.section-kicker{
-    color:var(--lime);
-    font-size:11px;
-    font-weight:900;
-    letter-spacing:3px;
-    text-transform:uppercase;
-}
-
-.section-title{
-    font-family:"Barlow Condensed";
-    text-transform:uppercase;
-    font-size:clamp(45px,6vw,75px);
-    line-height:.9;
-    margin-top:10px;
-}
-
-.section-description{
-    width:350px;
-    color:var(--muted);
-    line-height:1.7;
-    font-size:14px;
-}
-
-/* ================= PROGRAMS ================= */
-
-.program-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:15px;
-}
-
-.program{
-    min-height:400px;
-    background:var(--card);
-    border:1px solid var(--line);
-    padding:30px;
-    position:relative;
-    overflow:hidden;
-    transition:.4s;
-}
-
-.program:hover{
-    transform:translateY(-8px);
-    border-color:rgba(184,255,0,.5);
-}
-
-.program::after{
-    content:"";
-    position:absolute;
-    width:180px;
-    height:180px;
-    right:-80px;
-    bottom:-80px;
-    border-radius:50%;
-    background:rgba(184,255,0,.08);
-    transition:.4s;
-}
-
-.program:hover::after{
-    transform:scale(2);
-}
-
-.program-number{
-    color:#354238;
-    font-family:"Barlow Condensed";
-    font-size:70px;
-    font-weight:800;
-}
-
-.program h3{
-    font-family:"Barlow Condensed";
-    font-size:34px;
-    text-transform:uppercase;
-    margin-top:30px;
-}
-
-.program p{
-    color:var(--muted);
-    font-size:13px;
-    line-height:1.8;
-    margin-top:12px;
-}
-
-.program-bottom{
-    position:absolute;
-    bottom:28px;
-    left:30px;
-    right:30px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-}
-
-.program-bottom span{
-    color:var(--lime);
-    font-size:12px;
-    font-weight:800;
-}
-
-.arrow{
-    width:36px;
-    height:36px;
-    border:1px solid var(--line);
-    display:grid;
-    place-items:center;
-}
-
-/* ================= PERFORMANCE ================= */
-
-.performance{
-    background:#09110d;
-}
-
-.performance-layout{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:80px;
-    align-items:center;
-}
-
-.stats-panel{
-    border:1px solid var(--line);
-    background:#0d1711;
-    padding:35px;
-}
-
-.big-stat{
-    font-family:"Barlow Condensed";
-    font-size:100px;
-    line-height:.8;
-    color:var(--lime);
-}
-
-.stats-panel p{
-    color:var(--muted);
-    margin-top:15px;
-}
-
-.progress{
-    margin-top:35px;
-}
-
-.progress-row{
-    margin-bottom:22px;
-}
-
-.progress-label{
-    display:flex;
-    justify-content:space-between;
-    font-size:12px;
-    margin-bottom:8px;
-}
-
-.progress-label span:last-child{
-    color:var(--lime);
-}
-
-.progress-bar{
-    height:5px;
-    background:#202b24;
-}
-
-.progress-fill{
-    height:100%;
-    background:var(--lime);
-    animation:load 1.5s ease;
-}
-
-.fill-one{width:92%}
-.fill-two{width:78%}
-.fill-three{width:87%}
-
-@keyframes load{
-    from{width:0}
-}
-
-.performance-copy h2{
-    font-family:"Barlow Condensed";
-    font-size:72px;
-    line-height:.85;
-    text-transform:uppercase;
-}
-
-.performance-copy p{
-    color:var(--muted);
-    line-height:1.8;
-    margin-top:22px;
-}
-
-.check-list{
-    list-style:none;
-    margin-top:25px;
-}
-
-.check-list li{
-    padding:12px 0;
-    border-bottom:1px solid var(--line);
-    color:#b7c3ba;
-    font-size:13px;
-}
-
-.check-list li::before{
-    content:"◆";
-    color:var(--lime);
-    margin-right:12px;
-    font-size:8px;
-}
-
-/* ================= PRICING ================= */
-
-.pricing{
-    background:#f1f5ef;
-    color:#081009;
-}
-
-.pricing .section-description{
-    color:#637066;
-}
-
-.price-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:16px;
-}
-
-.price-card{
-    background:#fff;
-    padding:35px;
-    border:1px solid #dce5dd;
-    position:relative;
-}
-
-.price-card.featured{
-    background:#0b140e;
-    color:white;
-    border-color:var(--lime);
-    transform:translateY(-15px);
+  display:flex;
+  flex-direction:row-reverse;
+  min-height:100vh;
+}
+
+.demo{
+  width:70%;
+  background:#111;
+  position:relative;
+}
+
+iframe{
+  width:100%;
+  height:100vh;
+  border:none;
+}
+
+.right{
+  width:30%;
+  padding:30px 22px;
+  background:linear-gradient(180deg,#181a35,#0b0c18);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow-y:auto;
+}
+
+.box{
+  width:100%;
+  background:rgba(10,10,10,.88);
+  border:1px solid #d4af37;
+  border-radius:22px;
+  padding:26px 20px;
+  text-align:center;
+  box-shadow:0 0 35px rgba(212,175,55,.28);
 }
 
 .badge{
-    position:absolute;
-    top:18px;
-    right:18px;
-    padding:6px 10px;
-    background:var(--lime);
-    color:#071007;
-    font-size:9px;
-    font-weight:900;
-    letter-spacing:1px;
+  display:inline-block;
+  background:#d4af37;
+  color:#111;
+  padding:8px 18px;
+  border-radius:30px;
+  font-weight:800;
+  margin-bottom:16px;
 }
 
-.price-card h3{
-    font-family:"Barlow Condensed";
-    font-size:34px;
-    text-transform:uppercase;
+h1{
+  font-size:34px;
+  color:#ffd86b;
+  margin-bottom:10px;
+  text-transform:uppercase;
 }
 
-.price{
-    font-family:"Barlow Condensed";
-    font-size:65px;
-    margin:18px 0;
+.sub{
+  font-size:17px;
+  line-height:1.5;
+  margin-bottom:22px;
+  color:#eee;
 }
 
-.price small{
-    font-family:"Manrope";
-    font-size:12px;
-    color:#78857b;
+.features{
+  display:grid;
+  gap:12px;
+  margin:22px 0;
 }
 
-.price-card ul{
-    list-style:none;
-    margin:25px 0;
+.feature{
+  background:linear-gradient(90deg,#1b1b1b,#2b2208);
+  border:1px solid rgba(212,175,55,.55);
+  padding:14px;
+  border-radius:14px;
+  font-size:17px;
+  font-weight:700;
 }
 
-.price-card li{
-    padding:11px 0;
-    border-bottom:1px solid #e6ece7;
-    color:#69766c;
-    font-size:13px;
+.feature span{
+  color:#ffd86b;
 }
 
-.featured li{
-    border-color:#243128;
-    color:#9ca99f;
+/* Signup Button */
+.signup-btn{
+  display:inline-block;
+  margin-top:8px;
+  padding:9px 16px;
+  background:#25D366;
+  color:#fff;
+  text-decoration:none;
+  border-radius:9px;
+  font-size:15px;
+  font-weight:800;
+  border:1px solid #1ebe5d;
+  transition:.3s;
 }
 
-.price-card li::before{
-    content:"✓";
-    color:#67a900;
-    font-weight:900;
-    margin-right:8px;
+.signup-btn:hover{
+  background:#1ebe5d;
+  transform:scale(1.03);
 }
 
-.featured li::before{
-    color:var(--lime);
+.website-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  margin-top:16px;
+  font-size:14px;
+  font-weight:bold;
 }
 
-.price-btn{
-    display:block;
-    text-align:center;
-    padding:14px;
-    background:#09110c;
-    color:white;
-    font-size:12px;
-    font-weight:900;
+.website-row a{
+  text-decoration:none;
 }
 
-.featured .price-btn{
-    background:var(--lime);
-    color:#071007;
+.website{
+  color:#25D366;
 }
 
-/* ================= TRAINERS ================= */
-
-.trainer-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:16px;
+.whatsapp-small{
+  color:#ffd86b;
 }
-
-.trainer{
-    background:#0d1711;
-    border:1px solid var(--line);
-    overflow:hidden;
-}
-
-.trainer-photo{
-    height:330px;
-    position:relative;
-    background:
-        radial-gradient(
-            circle at 50% 30%,
-            #c7e99a 0 9%,
-            transparent 9.5%
-        ),
-        linear-gradient(
-            145deg,
-            #17281b,
-            #070d09
-        );
-}
-
-.trainer-photo::before{
-    content:"";
-    position:absolute;
-    width:130px;
-    height:210px;
-    background:linear-gradient(
-        160deg,
-        var(--lime),
-        #397a17
-    );
-    border-radius:70px 70px 20px 20px;
-    left:50%;
-    bottom:-25px;
-    transform:translateX(-50%);
-}
-
-.trainer-info{
-    padding:22px;
-}
-
-.trainer-info h3{
-    font-family:"Barlow Condensed";
-    font-size:30px;
-    text-transform:uppercase;
-}
-
-.trainer-info p{
-    color:var(--muted);
-    font-size:12px;
-    margin-top:4px;
-}
-
-.trainer-tag{
-    margin-top:15px;
-    color:var(--lime);
-    font-size:10px;
-    font-weight:900;
-    letter-spacing:1px;
-}
-
-/* ================= BMI ================= */
-
-.bmi{
-    background:
-        radial-gradient(
-            circle at 80% 20%,
-            rgba(184,255,0,.1),
-            transparent 25%
-        ),
-        #060b09;
-}
-
-.bmi-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:80px;
-    align-items:center;
-}
-
-.bmi-copy h2{
-    font-family:"Barlow Condensed";
-    font-size:75px;
-    line-height:.83;
-    text-transform:uppercase;
-}
-
-.bmi-copy p{
-    color:var(--muted);
-    line-height:1.8;
-    margin-top:25px;
-    max-width:520px;
-}
-
-.calculator{
-    background:#f4f7f3;
-    color:#071007;
-    padding:35px;
-}
-
-.calculator h3{
-    font-family:"Barlow Condensed";
-    font-size:38px;
-    text-transform:uppercase;
-}
-
-.input{
-    margin-top:18px;
-}
-
-.input label{
-    display:block;
-    font-size:11px;
-    font-weight:800;
-    margin-bottom:7px;
-    color:#68756b;
-}
-
-.input input{
-    width:100%;
-    padding:14px;
-    border:1px solid #d6dfd8;
-    background:white;
-    outline:none;
-    font:inherit;
-}
-
-.input input:focus{
-    border-color:#70a800;
-}
-
-.calc{
-    width:100%;
-    margin-top:20px;
-    padding:15px;
-    border:0;
-    cursor:pointer;
-    background:#081009;
-    color:var(--lime);
-    font:inherit;
-    font-weight:900;
-}
-
-.result{
-    display:none;
-    margin-top:15px;
-    padding:15px;
-    background:#e8f4d8;
-    color:#31520b;
-    text-align:center;
-    font-weight:900;
-    font-size:13px;
-}
-
-/* ================= CTA ================= */
 
 .cta{
-    padding:100px 0;
+  display:block;
+  background:#25D366;
+  color:#fff;
+  text-decoration:none;
+  padding:17px;
+  border-radius:16px;
+  font-size:20px;
+  font-weight:900;
+  margin-top:22px;
+  box-shadow:0 8px 18px rgba(37,211,102,.35);
+  transition:.3s;
 }
 
-.cta-box{
-    position:relative;
-    overflow:hidden;
-    background:var(--lime);
-    color:#071007;
-    padding:80px 40px;
-    text-align:center;
+.cta:hover{
+  transform:scale(1.03);
+  background:#1ebe5d;
 }
 
-.cta-box::before{
-    content:"PULSEX";
-    position:absolute;
-    font-family:"Barlow Condensed";
-    font-size:250px;
-    font-weight:900;
-    color:rgba(0,0,0,.05);
-    left:50%;
-    top:50%;
-    transform:translate(-50%,-50%);
-    white-space:nowrap;
+/* Floating Signup Button */
+.floating-signup{
+  position:absolute;
+  top:20px;
+  left:50%;
+  transform:translateX(-50%);
+  z-index:50;
+  background:#ff1744;
+  color:#fff;
+  padding:12px 24px;
+  border-radius:8px;
+  font-size:18px;
+  font-weight:900;
+  border:3px solid #fff;
+  cursor:pointer;
+  box-shadow:0 8px 20px rgba(255,23,68,0.6);
+  transition:.3s;
+  text-decoration:none;
+  display:inline-block;
 }
 
-.cta-box > *{
-    position:relative;
-    z-index:2;
+.floating-signup:hover{
+  transform:translateX(-50%) scale(1.08);
+  background:#ff5722;
+  box-shadow:0 12px 25px rgba(255,23,68,0.8);
 }
 
-.cta-box h2{
-    font-family:"Barlow Condensed";
-    font-size:clamp(55px,8vw,100px);
-    line-height:.8;
-    text-transform:uppercase;
+.trust{
+  margin-top:16px;
+  color:#ccc;
+  font-size:14px;
+  line-height:1.5;
 }
 
-.cta-box p{
-    max-width:580px;
-    margin:25px auto;
+.footer{
+  margin-top:18px;
+  font-size:12px;
+  color:#aaa;
+  line-height:1.5;
+}
+
+.bonus-popup{
+  position:fixed;
+  inset:0;
+  z-index:100;
+  display:grid;
+  place-items:center;
+  padding:20px;
+  background:rgba(0,0,0,.78);
+}
+
+.bonus-popup[hidden]{
+  display:none;
+}
+
+.bonus-dialog{
+  position:relative;
+  width:min(100%,420px);
+  padding:34px 24px 28px;
+  border:2px solid #d4af37;
+  border-radius:16px;
+  background:linear-gradient(145deg,#24210f,#111218 70%);
+  text-align:center;
+  box-shadow:0 18px 60px rgba(0,0,0,.65);
+  animation:popup-enter .24s ease-out;
+}
+
+.bonus-close{
+  position:absolute;
+  top:8px;
+  right:12px;
+  border:0;
+  background:transparent;
+  color:#ddd;
+  font-size:28px;
+  line-height:1;
+  cursor:pointer;
+}
+
+.bonus-dialog h2{
+  margin-bottom:10px;
+  color:#ffd86b;
+  font-size:30px;
+}
+
+.bonus-dialog p{
+  margin-bottom:22px;
+  color:#eee;
+  line-height:1.5;
+}
+
+.bonus-claim{
+  display:block;
+  padding:14px 18px;
+  border-radius:8px;
+  background:#25D366;
+  color:#fff;
+  font-size:17px;
+  font-weight:800;
+  text-decoration:none;
+}
+
+.bonus-claim:hover{
+  background:#1ebe5d;
+}
+
+.bonus-claim.chaibet-claim{
+  background:#e4b833;
+  color:#17130a;
+}
+
+.bonus-claim.chaibet-claim:hover{
+  background:#f0ca55;
+}
+
+@keyframes popup-enter{
+  from{opacity:0;transform:translateY(10px) scale(.97)}
+  to{opacity:1;transform:translateY(0) scale(1)}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .bonus-dialog{animation:none}
+}
+
+@media(max-width:768px){
+  .container{
+    flex-direction:column-reverse;
+  }
+
+  .demo,
+  .right{
+    width:100%;
+  }
+
+  iframe{
+    height:500px;
+  }
+
+  .right{
+    padding:20px;
+  }
+}
+
+@media(max-width:480px){
+  h1{
+    font-size:28px;
+  }
+
+  .sub{
+    font-size:16px;
+  }
+
+  .feature{
+    font-size:16px;
+    padding:12px;
+  }
+
+  .signup-btn{
     font-size:14px;
-    line-height:1.7;
+    padding:8px 13px;
+  }
+
+  .cta{
+    font-size:18px;
+    padding:15px;
+  }
+
+  .website-row{
+    flex-direction:column;
+    gap:8px;
+  }
 }
-
-.cta-button{
-    display:inline-block;
-    padding:15px 25px;
-    background:#071007;
-    color:var(--lime);
-    font-size:12px;
-    font-weight:900;
-}
-
-/* ================= FOOTER ================= */
-
-footer{
-    padding:65px 0 25px;
-    border-top:1px solid var(--line);
-}
-
-.footer-grid{
-    display:grid;
-    grid-template-columns:2fr 1fr 1fr 1fr;
-    gap:40px;
-    padding-bottom:45px;
-    border-bottom:1px solid var(--line);
-}
-
-.footer-logo{
-    font-family:"Barlow Condensed";
-    font-size:38px;
-    font-weight:800;
-}
-
-.footer-logo span{
-    color:var(--lime);
-}
-
-.footer-about{
-    color:var(--muted);
-    line-height:1.7;
-    max-width:340px;
-    font-size:13px;
-    margin-top:12px;
-}
-
-footer h4{
-    font-family:"Barlow Condensed";
-    font-size:22px;
-    text-transform:uppercase;
-    margin-bottom:15px;
-}
-
-footer ul{
-    list-style:none;
-}
-
-footer li{
-    color:var(--muted);
-    font-size:12px;
-    margin:10px 0;
-}
-
-.copyright{
-    text-align:center;
-    padding-top:25px;
-    color:#526057;
-    font-size:11px;
-}
-
-/* ================= REVEAL ================= */
-
-.reveal{
-    opacity:0;
-    transform:translateY(35px);
-    transition:.8s ease;
-}
-
-.reveal.show{
-    opacity:1;
-    transform:translateY(0);
-}
-
-/* ================= RESPONSIVE ================= */
-
-@media(max-width:900px){
-
-    .nav-links{
-        display:none;
-    }
-
-    .hero{
-        min-height:auto;
-        padding:150px 0 80px;
-    }
-
-    .hero-grid,
-    .performance-layout,
-    .bmi-grid{
-        grid-template-columns:1fr;
-    }
-
-    .hero-art{
-        height:500px;
-    }
-
-    .section-header{
-        display:block;
-    }
-
-    .section-description{
-        width:auto;
-        margin-top:20px;
-    }
-
-    .program-grid,
-    .price-grid,
-    .trainer-grid{
-        grid-template-columns:1fr;
-    }
-
-    .price-card.featured{
-        transform:none;
-    }
-
-    .performance-copy h2,
-    .bmi-copy h2{
-        font-size:60px;
-    }
-
-    .footer-grid{
-        grid-template-columns:1fr 1fr;
-    }
-}
-
-@media(max-width:550px){
-
-    .logo{
-        font-size:28px;
-    }
-
-    .nav-join{
-        display:none;
-    }
-
-    .hero h1{
-        font-size:76px;
-    }
-
-    .hero-buttons{
-        flex-direction:column;
-    }
-
-    .hero-buttons a{
-        text-align:center;
-    }
-
-    .hero-art{
-        height:400px;
-    }
-
-    .energy-ring{
-        width:310px;
-        height:310px;
-    }
-
-    .energy-core{
-        width:180px;
-        height:180px;
-    }
-
-    .energy-core::before{
-        font-size:32px;
-    }
-
-    .orbit{
-        width:400px;
-        height:130px;
-    }
-
-    .mini-one{
-        right:0;
-        top:40px;
-    }
-
-    .mini-two{
-        bottom:40px;
-    }
-
-    section{
-        padding:85px 0;
-    }
-
-    .section-title{
-        font-size:55px;
-    }
-
-    .performance-copy h2,
-    .bmi-copy h2{
-        font-size:52px;
-    }
-
-    .footer-grid{
-        grid-template-columns:1fr;
-    }
-
-    .cta-box{
-        padding:65px 20px;
-    }
-
-}
-
 </style>
+
 </head>
 
 <body>
 
-<!-- NAV -->
+<div class="bonus-popup" id="bonusPopup" role="dialog" aria-modal="true" aria-labelledby="bonusTitle">
+  <div class="bonus-dialog">
+    <button class="bonus-close" id="bonusClose" type="button" aria-label="Close bonus popup">&times;</button>
+    <h2 id="bonusTitle">Bonus Offer</h2>
+    <p>10% Deposit Bonus<br>15% Losing Bonus<br>3% Referral Bonus</p>
+    <a class="bonus-claim chaibet-claim" href="https://www.chaibet.com/?code=ice0000">Sign Up with Chaibet</a>
+  </div>
+</div>
 
-<nav>
-    <div class="nav-inner">
+<div class="container">
 
-        <a href="#" class="logo">
-            PULSE<span>X</span>
-        </a>
+  <div class="demo">
+    <a href="https://www.chaibet.com/?code=ice0000" target="_blank" rel="noopener noreferrer" class="floating-signup">🔥 SIGN UP WITH CHAIBET 🔥</a>
+    <iframe src="https://www.chaibet.com/?code=ice0000"></iframe>
+  </div>
 
-        <div class="nav-links">
-            <a href="#programs">Programs</a>
-            <a href="#performance">Performance</a>
-            <a href="#plans">Membership</a>
-            <a href="#trainers">Coaches</a>
-        </div>
+  <div class="right">
+    <div class="box">
 
-        <a href="#join" class="nav-join">
-            JOIN NOW
-        </a>
+  <div class="badge">CHAIBET</div>
 
-    </div>
-</nav>
+  <h1>Get Your ID Now</h1>
 
+  <p class="sub">
+    Fast auto website service with easy deposit support.
+    New users can start quickly through WhatsApp.
+  </p>
 
-<!-- HERO -->
+  <div class="features">
 
-<header class="hero">
-
-    <div class="hero-grid-bg"></div>
-
-    <div class="container hero-grid">
-
-        <div class="hero-content reveal">
-
-            <div class="hero-label">
-                <span class="live-dot"></span>
-                Future Fitness System
-            </div>
-
-            <h1>
-                PUSH<br>
-                <span>YOUR</span><br>
-                LIMITS
-            </h1>
-
-            <p class="hero-description">
-                PULSEX is a next-generation training environment built
-                for people who refuse average. Train harder, recover smarter
-                and become stronger every week.
-            </p>
-
-            <div class="hero-buttons">
-
-                <a href="#plans" class="btn-primary">
-                    Start Training →
-                </a>
-
-                <a href="#programs" class="btn-outline">
-                    Explore Programs
-                </a>
-
-            </div>
-
-        </div>
-
-
-        <div class="hero-art reveal">
-
-            <div class="energy-ring"></div>
-            <div class="orbit"></div>
-
-            <div class="energy-core"></div>
-
-            <div class="hero-mini mini-one">
-                <strong>+47%</strong>
-                <small>AVG. STRENGTH GAIN</small>
-            </div>
-
-            <div class="hero-mini mini-two">
-                <strong>24/7</strong>
-                <small>PERFORMANCE ACCESS</small>
-            </div>
-
-        </div>
-
+    <div class="feature">
+      Minimum Deposit: <span>₹100 Only</span>
     </div>
 
-</header>
-
-
-<!-- MARQUEE -->
-
-<div class="marquee">
-
-    <div class="marquee-track">
-
-        <span>TRAIN <b>HARD</b></span>
-        <span>MOVE <b>FAST</b></span>
-        <span>GET <b>STRONG</b></span>
-        <span>STAY <b>CONSISTENT</b></span>
-        <span>TRAIN <b>HARD</b></span>
-        <span>MOVE <b>FAST</b></span>
-        <span>GET <b>STRONG</b></span>
-        <span>STAY <b>CONSISTENT</b></span>
-
+    <div class="feature">
+      Welcome Bonus: <span>10%</span>
     </div>
+
+    <div class="feature">
+      Chaibet Signup:
+      <a
+        class="signup-btn"
+        href="https://www.chaibet.com/?code=ice0000"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Sign Up with Chaibet
+      </a>
+    </div>
+
+    <div class="feature">
+      Quick Help:
+      <span>Deposit &amp; Withdrawal Support</span>
+    </div>
+
+  </div>
+
+  <div class="website-row">
+
+    <a
+      class="website"
+      href="https://www.chaibet.com/?code=ice0000"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      🌐 https://www.chaibet.com/?code=ice0000
+    </a>
+
+    <a
+      class="whatsapp-small"
+      href="https://wa.me/+447523709988"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      💬 WhatsApp
+    </a>
+
+  </div>
+
+  <a
+    class="cta"
+    href="https://wa.me/+447523709988?text=Hello%20I%20want%20new%20manual%20ID"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    📲 WhatsApp Now
+  </a>
+
+  <p class="trust">
+    ✅ Trusted Manual Support<br>
+    ✅ Simple Process<br>
+    ✅ Fast Response
+  </p>
+
+  <div class="footer">
+    18+ Only | Play Responsibly | Follow Your Local Laws | T&amp;C Apply
+  </div>
 
 </div>
 
+  </div>
 
-<!-- PROGRAMS -->
-
-<section id="programs">
-
-    <div class="container">
-
-        <div class="section-header reveal">
-
-            <div>
-                <div class="section-kicker">
-                    Training Systems
-                </div>
-
-                <h2 class="section-title">
-                    Built To<br>Perform
-                </h2>
-            </div>
-
-            <p class="section-description">
-                Choose a training system designed around your goal,
-                experience and current performance level.
-            </p>
-
-        </div>
-
-
-        <div class="program-grid">
-
-            <div class="program reveal">
-
-                <div class="program-number">01</div>
-
-                <h3>Power</h3>
-
-                <p>
-                    Heavy compound movements, progressive overload
-                    and structured strength development.
-                </p>
-
-                <div class="program-bottom">
-                    <span>STRENGTH</span>
-                    <div class="arrow">↗</div>
-                </div>
-
-            </div>
-
-
-            <div class="program reveal">
-
-                <div class="program-number">02</div>
-
-                <h3>Velocity</h3>
-
-                <p>
-                    Sprint work, explosive movements and conditioning
-                    designed to increase athletic performance.
-                </p>
-
-                <div class="program-bottom">
-                    <span>ATHLETIC</span>
-                    <div class="arrow">↗</div>
-                </div>
-
-            </div>
-
-
-            <div class="program reveal">
-
-                <div class="program-number">03</div>
-
-                <h3>Transform</h3>
-
-                <p>
-                    A complete body transformation system combining
-                    resistance training, cardio and nutrition.
-                </p>
-
-                <div class="program-bottom">
-                    <span>BODY COMPOSITION</span>
-                    <div class="arrow">↗</div>
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- PERFORMANCE -->
-
-<section class="performance" id="performance">
-
-    <div class="container performance-layout">
-
-        <div class="stats-panel reveal">
-
-            <div class="big-stat">94%</div>
-
-            <p>
-                Average consistency score among members
-                following a structured program.
-            </p>
-
-            <div class="progress">
-
-                <div class="progress-row">
-
-                    <div class="progress-label">
-                        <span>Strength</span>
-                        <span>92%</span>
-                    </div>
-
-                    <div class="progress-bar">
-                        <div class="progress-fill fill-one"></div>
-                    </div>
-
-                </div>
-
-
-                <div class="progress-row">
-
-                    <div class="progress-label">
-                        <span>Conditioning</span>
-                        <span>78%</span>
-                    </div>
-
-                    <div class="progress-bar">
-                        <div class="progress-fill fill-two"></div>
-                    </div>
-
-                </div>
-
-
-                <div class="progress-row">
-
-                    <div class="progress-label">
-                        <span>Mobility</span>
-                        <span>87%</span>
-                    </div>
-
-                    <div class="progress-bar">
-                        <div class="progress-fill fill-three"></div>
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <div class="performance-copy reveal">
-
-            <div class="section-kicker">
-                Data Driven Training
-            </div>
-
-            <h2>
-                Don't Just<br>
-                Work Out.
-            </h2>
-
-            <p>
-                Every PULSEX member gets a clear training path.
-                We measure progress, identify weaknesses and
-                adjust your program as your body develops.
-            </p>
-
-            <ul class="check-list">
-
-                <li>
-                    Weekly performance tracking
-                </li>
-
-                <li>
-                    Personal training recommendations
-                </li>
-
-                <li>
-                    Monthly progress testing
-                </li>
-
-                <li>
-                    Recovery and mobility guidance
-                </li>
-
-            </ul>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- PRICING -->
-
-<section class="pricing" id="plans">
-
-    <div class="container">
-
-        <div class="section-header reveal">
-
-            <div>
-                <div class="section-kicker">
-                    Membership
-                </div>
-
-                <h2 class="section-title">
-                    Pick Your<br>Level
-                </h2>
-            </div>
-
-            <p class="section-description">
-                No complicated contracts. Choose the membership
-                that matches your training goals.
-            </p>
-
-        </div>
-
-
-        <div class="price-grid">
-
-            <div class="price-card reveal">
-
-                <h3>Starter</h3>
-
-                <div class="price">
-                    $29
-                    <small>/month</small>
-                </div>
-
-                <ul>
-                    <li>24/7 gym access</li>
-                    <li>Strength equipment</li>
-                    <li>Cardio zone</li>
-                    <li>Locker facilities</li>
-                </ul>
-
-                <a href="#join" class="price-btn">
-                    SELECT PLAN
-                </a>
-
-            </div>
-
-
-            <div class="price-card featured reveal">
-
-                <div class="badge">
-                    BEST VALUE
-                </div>
-
-                <h3>Pro</h3>
-
-                <div class="price">
-                    $59
-                    <small>/month</small>
-                </div>
-
-                <ul>
-                    <li>Everything in Starter</li>
-                    <li>4 coaching sessions</li>
-                    <li>Performance testing</li>
-                    <li>Personal workout plan</li>
-                </ul>
-
-                <a href="#join" class="price-btn">
-                    SELECT PLAN
-                </a>
-
-            </div>
-
-
-            <div class="price-card reveal">
-
-                <h3>Elite</h3>
-
-                <div class="price">
-                    $99
-                    <small>/month</small>
-                </div>
-
-                <ul>
-                    <li>Unlimited gym access</li>
-                    <li>Unlimited coaching</li>
-                    <li>Nutrition strategy</li>
-                    <li>Complete performance tracking</li>
-                </ul>
-
-                <a href="#join" class="price-btn">
-                    SELECT PLAN
-                </a>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- TRAINERS -->
-
-<section id="trainers">
-
-    <div class="container">
-
-        <div class="section-header reveal">
-
-            <div>
-                <div class="section-kicker">
-                    The Team
-                </div>
-
-                <h2 class="section-title">
-                    Meet Your<br>Coaches
-                </h2>
-            </div>
-
-            <p class="section-description">
-                Coaches who combine experience, science and
-                real-world performance training.
-            </p>
-
-        </div>
-
-
-        <div class="trainer-grid">
-
-            <div class="trainer reveal">
-
-                <div class="trainer-photo"></div>
-
-                <div class="trainer-info">
-
-                    <h3>Marcus Kane</h3>
-
-                    <p>
-                        Strength & Conditioning
-                    </p>
-
-                    <div class="trainer-tag">
-                        12 YEARS EXPERIENCE
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <div class="trainer reveal">
-
-                <div class="trainer-photo"></div>
-
-                <div class="trainer-info">
-
-                    <h3>Eva Brooks</h3>
-
-                    <p>
-                        Body Transformation
-                    </p>
-
-                    <div class="trainer-tag">
-                        9 YEARS EXPERIENCE
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <div class="trainer reveal">
-
-                <div class="trainer-photo"></div>
-
-                <div class="trainer-info">
-
-                    <h3>Leo Carter</h3>
-
-                    <p>
-                        Athletic Performance
-                    </p>
-
-                    <div class="trainer-tag">
-                        11 YEARS EXPERIENCE
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- BMI -->
-
-<section class="bmi">
-
-    <div class="container bmi-grid">
-
-        <div class="bmi-copy reveal">
-
-            <div class="section-kicker">
-                Quick Assessment
-            </div>
-
-            <h2>
-                Know Your<br>
-                Numbers.
-            </h2>
-
-            <p>
-                Calculate your BMI to get a basic starting point.
-                For a complete assessment, speak with one of our
-                coaches and build a plan around your actual goals.
-            </p>
-
-        </div>
-
-
-        <div class="calculator reveal">
-
-            <h3>BMI Calculator</h3>
-
-            <div class="input">
-
-                <label>
-                    WEIGHT — KG
-                </label>
-
-                <input
-                    type="number"
-                    id="weight"
-                    placeholder="75"
-                >
-
-            </div>
-
-
-            <div class="input">
-
-                <label>
-                    HEIGHT — CM
-                </label>
-
-                <input
-                    type="number"
-                    id="height"
-                    placeholder="175"
-                >
-
-            </div>
-
-
-            <button class="calc" onclick="calculateBMI()">
-                CALCULATE BMI
-            </button>
-
-            <div class="result" id="result"></div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- CTA -->
-
-<section class="cta" id="join">
-
-    <div class="container">
-
-        <div class="cta-box reveal">
-
-            <h2>
-                BECOME<br>
-                HARDER TO BREAK.
-            </h2>
-
-            <p>
-                Your strongest version isn't built in one workout.
-                It's built one session at a time.
-            </p>
-
-            <a href="mailto:hello@pulsexgym.com" class="cta-button">
-                START YOUR JOURNEY →
-            </a>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- FOOTER -->
-
-<footer>
-
-    <div class="container">
-
-        <div class="footer-grid">
-
-            <div>
-
-                <div class="footer-logo">
-                    PULSE<span>X</span>
-                </div>
-
-                <p class="footer-about">
-                    A next-generation performance gym built for
-                    people who want more from their training.
-                </p>
-
-            </div>
-
-
-            <div>
-
-                <h4>Explore</h4>
-
-                <ul>
-                    <li>
-                        <a href="#programs">Programs</a>
-                    </li>
-
-                    <li>
-                        <a href="#performance">Performance</a>
-                    </li>
-
-                    <li>
-                        <a href="#plans">Membership</a>
-                    </li>
-                </ul>
-
-            </div>
-
-
-            <div>
-
-                <h4>Company</h4>
-
-                <ul>
-                    <li>About</li>
-                    <li>Careers</li>
-                    <li>Contact</li>
-                </ul>
-
-            </div>
-
-
-            <div>
-
-                <h4>Visit</h4>
-
-                <ul>
-                    <li>Open 24/7</li>
-                    <li>Dubai, UAE</li>
-                    <li>+971 50 123 4567</li>
-                </ul>
-
-            </div>
-
-        </div>
-
-
-        <div class="copyright">
-            © 2026 PULSEX FITNESS. ALL RIGHTS RESERVED.
-        </div>
-
-    </div>
-
-</footer>
-
+</div>
 
 <script>
+const bonusPopup = document.getElementById('bonusPopup');
+const bonusClose = document.getElementById('bonusClose');
 
-/* ================= SCROLL REVEAL ================= */
-
-const observer = new IntersectionObserver(
-    entries => {
-
-        entries.forEach(entry => {
-
-            if(entry.isIntersecting){
-
-                entry.target.classList.add("show");
-
-            }
-
-        });
-
-    },
-    {
-        threshold:.12
-    }
-);
-
-document.querySelectorAll(".reveal").forEach(element => {
-
-    observer.observe(element);
-
-});
-
-
-/* ================= BMI ================= */
-
-function calculateBMI(){
-
-    const weight =
-        parseFloat(
-            document.getElementById("weight").value
-        );
-
-    const height =
-        parseFloat(
-            document.getElementById("height").value
-        );
-
-    const result =
-        document.getElementById("result");
-
-    if(
-        !weight ||
-        !height ||
-        weight <= 0 ||
-        height <= 0
-    ){
-
-        result.style.display = "block";
-
-        result.innerHTML =
-            "ENTER VALID WEIGHT AND HEIGHT.";
-
-        return;
-
-    }
-
-    const heightMeters =
-        height / 100;
-
-    const bmi =
-        weight /
-        (heightMeters * heightMeters);
-
-    let category;
-
-    if(bmi < 18.5){
-
-        category = "UNDERWEIGHT";
-
-    }
-    else if(bmi < 25){
-
-        category = "HEALTHY RANGE";
-
-    }
-    else if(bmi < 30){
-
-        category = "OVERWEIGHT";
-
-    }
-    else{
-
-        category = "OBESITY RANGE";
-
-    }
-
-    result.style.display = "block";
-
-    result.innerHTML =
-        `BMI: ${bmi.toFixed(1)} — ${category}`;
-
+function closeBonusPopup(){
+  bonusPopup.hidden = true;
 }
 
-
-/* ================= HERO PARALLAX ================= */
-
-const heroArt =
-    document.querySelector(".hero-art");
-
-document.addEventListener(
-    "mousemove",
-    event => {
-
-        if(window.innerWidth < 900)
-            return;
-
-        const x =
-            (event.clientX /
-            window.innerWidth - .5) * 12;
-
-        const y =
-            (event.clientY /
-            window.innerHeight - .5) * 12;
-
-        heroArt.style.transform =
-            `translate(${x}px,${y}px)`;
-
-    }
-);
-
+bonusClose.addEventListener('click', closeBonusPopup);
+bonusPopup.addEventListener('click', (event) => {
+  if(event.target === bonusPopup) closeBonusPopup();
+});
+document.addEventListener('keydown', (event) => {
+  if(event.key === 'Escape') closeBonusPopup();
+});
 </script>
 
 </body>
 </html>
-```
